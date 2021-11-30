@@ -1,0 +1,51 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+
+	<meta charset="utf-8">
+	<!-- <base href="/"> -->
+
+	<title>OptimizedHTML 5</title>
+	<meta name="description" content="Startup HTML template OptimizedHTML 5">
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<link rel="icon" href="images/favicon.png">
+	<meta property="og:image" content="images/dist/preview.jpg">
+	
+	<link rel="stylesheet" href="css/app.min.css">
+
+</head>
+
+<body>
+
+	<div style="max-width: 700px; margin: auto">
+
+		<video></video>
+		<input controls type="file" name="file" id="fileItem" onchange="onChange()" >
+    	<input type="submit" value="Play">
+		<!-- <video controls autoplay src="video/yt.mp4"></video>
+		<video controls id="video" autoplay src="video/yt.mp4"></video> -->
+		<script>
+			var URL = window.URL || window.webkitURL;
+			var video = document.getElementsByTagName('video')[0];
+			function onChange() {
+				var fileItem = document.getElementById('fileItem');
+				var files = fileItem.files;
+				var file = files[0];
+				var urlBlob = URL.createObjectURL(file);
+				video.src = urlBlob;
+				video.load();
+				video.onloadeddata = function() {
+					video.play();
+				}
+			}
+		</script>
+	</div>
+
+	<script src="js/app.min.js"></script>
+
+</body>
+</html>

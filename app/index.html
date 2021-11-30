@@ -1,0 +1,28 @@
+<!--#set var="title" value="OptimizedHTML 5" -->
+<!--#include virtual="/parts/header.html" -->
+
+	<div style="max-width: 700px; margin: auto">
+
+		<video></video>
+		<input controls type="file" name="file" id="fileItem" onchange="onChange()" >
+    	<input type="submit" value="Play">
+		<!-- <video controls autoplay src="video/yt.mp4"></video>
+		<video controls id="video" autoplay src="video/yt.mp4"></video> -->
+		<script>
+			var URL = window.URL || window.webkitURL;
+			var video = document.getElementsByTagName('video')[0];
+			function onChange() {
+				var fileItem = document.getElementById('fileItem');
+				var files = fileItem.files;
+				var file = files[0];
+				var urlBlob = URL.createObjectURL(file);
+				video.src = urlBlob;
+				video.load();
+				video.onloadeddata = function() {
+					video.play();
+				}
+			}
+		</script>
+	</div>
+
+<!--#include virtual="/parts/footer.html" -->
